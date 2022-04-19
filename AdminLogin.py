@@ -1,5 +1,6 @@
 import csvReaderCode
-class AdminLogin:
+
+class AdminLogin():
 
     def adminLogin(self):
         print("******Welcome Admin*******")
@@ -17,7 +18,9 @@ class AdminLogin:
             case 3:
                 self.deleteMovies()
             case 4:
-                print()
+                self.logout()
+                return
+
 
 
     def addNewMovie(self):
@@ -80,12 +83,16 @@ class AdminLogin:
 
 
 
-
-
     def deleteMovies(self):
         print("Delete Movie: ")
         print("----------------------------------------------------")
         deltitle = input("Title of the movie to be deleted: ")
+        csvReaderCode.deletemovie(deltitle)
+
+    def logout(self):
+        print("Logged out successfully")
+        return
+
 
 
 

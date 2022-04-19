@@ -1,6 +1,8 @@
 import csv
+from jproperties import Properties
 
 movies = []
+users =[]
 def writeData(moviedata):
     movies.append(moviedata)
     with open('booking_file.csv', mode='w') as employee_file:
@@ -57,4 +59,35 @@ def updatecsv(moviedata, index):
     with open('booking_file.csv', mode='w') as employee_file:
         booking_writer = csv.writer(employee_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         booking_writer.writerows(li)
+
+def deletemovie(moviename):
+    li = readalldata()
+    with open('booking_file.csv', mode='w') as employee_file:
+        booking_writer = csv.writer(employee_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        for i in range(0,len(li)):
+            if li[i][0]!= moviename:
+                booking_writer.writerow(li[i])
+
+        print("Movie deleted Successfully")
+
+
+def addUsers(userdetails):
+    users.append(userdetails)
+    with open('userdetails.csv', mode='w') as employee_file:
+        user_writer = csv.writer(employee_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+        for i in range (0, len(users)) :
+            user_writer.writerow(users[i])
+
+        configs = Properties()
+        with open('credentials.properties', 'rb') as write_prop:
+            configs.
+
+
+    print("Users added successfully")
+
+
+
+
+
 
