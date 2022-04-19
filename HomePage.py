@@ -9,8 +9,8 @@ class HomePage:
     print("1. Login")
     print("2. Register new account")
     print("3. Exit")
-    fileVariable = open('booking_file.csv', 'r+')
-    fileVariable.truncate(0)
+    #fileVariable = open('booking_file.csv', 'r+')
+    #fileVariable.truncate(0)
     selectOption = int(input("Enter: "))
 
     match selectOption:

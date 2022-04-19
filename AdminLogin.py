@@ -21,6 +21,7 @@ class AdminLogin:
 
 
     def addNewMovie(self):
+
         print("Add new Movie: ")
         print("----------------------------------------------------")
         movietitle = input("Title: ")
@@ -49,9 +50,34 @@ class AdminLogin:
 
 
     def editMovieInfo(self):
+        csvReaderCode.displaymovies()
         print("Edit Movie: ")
         print("----------------------------------------------------")
         moviename = input("Select movie which you want to edit: ")
+        li=csvReaderCode.readData(moviename)
+        if li == 0:
+            self.editMovieInfo()
+
+        movietitle = input("Title: ")
+        genre = input("Genre: ")
+        length = input("Length: ")
+        cast = input("Cast: ")
+        director = input("Director: ")
+        adminrating = input("Admin Rating: ")
+        language = input("Language: ")
+        print("Timings:")
+        print("----------------------------------------------------")
+        shows = int(input("Number of Shows in a day: "))
+        firstshow = input("First Show: ")
+        intervaltime = input("Interval Time: ")
+        gap = input("Gap Between Shows: ")
+        capacity = int(input("Capacity: "))
+
+        moviedata = [movietitle, genre, length, cast, director, adminrating,
+                     language, shows, firstshow, intervaltime, gap, capacity]
+
+        csvReaderCode.updatecsv(moviedata, csvReaderCode.readmovieindex(moviename))
+
 
 
 
