@@ -76,9 +76,10 @@ class AdminLogin():
         intervaltime = input("Interval Time: ")
         gap = input("Gap Between Shows: ")
         capacity = int(input("Capacity: "))
+        userrating = "0/10"
 
         moviedata = [movietitle, genre, length, cast, director, adminrating,
-                     language, shows, firstshow, intervaltime, gap, capacity]
+                     language, shows, firstshow, intervaltime, gap, capacity, userrating]
 
         csvReaderCode.updatecsv(moviedata, csvReaderCode.readmovieindex(moviename))
         self.adminLogin()

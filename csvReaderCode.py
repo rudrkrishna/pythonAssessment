@@ -1,5 +1,4 @@
 import csv
-from jproperties import Properties
 
 movies = []
 users =[]
