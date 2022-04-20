@@ -85,6 +85,7 @@ class AdminLogin():
 
 
     def deleteMovies(self):
+
         print("Delete Movie: ")
         print("----------------------------------------------------")
         deltitle = input("Title of the movie to be deleted: ")

@@ -1,11 +1,11 @@
 import csvReaderCode
 
-
 class UserLogin:
+
     def userLogin(self, user):
 
         print("----------------------------------------------------")
-        print("******Welcome "+ user +"*******")
+        print("******Welcome "+ user +" *******")
         csvReaderCode.displaymoviesbyindex()
         i = int(input("Enter Movie: "))
         li = csvReaderCode.readMovieData(i)
@@ -33,7 +33,12 @@ class UserLogin:
             print(time)
             csvReaderCode.bookingsUpdate([li[0], hrs+" - "+time , int(li[11])])
             hrs=self.mintohrs(time, int(li[10].split()[0]))
-        print("User Rating: "+li[12])
+        print("User Rating: " + li[12])
+        self.useractions()
+
+
+    def useractions(self):
+
         print("1.  Book Tickets ")
         print("2.  Cancel Tickets ")
         print("3.  Give User Rating ")
@@ -50,6 +55,7 @@ class UserLogin:
 
 
     def mintohrs(self, hrs, mins):
+
         if isinstance(int(hrs.split()[2]), int):
             mins = mins+int(hrs.split()[2])
 
@@ -62,9 +68,31 @@ class UserLogin:
 
     def bookticket(self):
 
+        csvReaderCode.movietimings()
+        selecttime = int(input("Select Timing: "))
+        csvReaderCode.fetchSeats(selecttime)
+        count=int(input("Enter Number of Seats: "))
+
+        if csvReaderCode.bookseats(count, selecttime):
+            self.bookticket()
+        else:
+            print("Thanks for booking. ")
+            self.useractions()
+
+
+
+
 
 
     def cancelticket(self):
+        csvReaderCode.showbookings()
+        selectmovie = int(input("Select movie you want to cancel tickets: "))
+        cancel = int(input("Number of seats you want to cancel: "))
+        if csvReaderCode.updatecanceltickets(selectmovie, cancel):
+            self.cancelticket()
+        else:
+            print("Tickets cancelled Successfully")
 
 
     def giveuserrating(self):
+        print()
