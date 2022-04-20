@@ -20,7 +20,7 @@ class Login:
             AdminLogin().adminLogin()
         else:
             self.passwordValidation(userID, password)
-            UserLogin().userLogin()
+            UserLogin().userLogin(userID)
 
     def passwordValidation(self, userID, password):
         configs = Properties()
