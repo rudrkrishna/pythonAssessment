@@ -42,6 +42,7 @@ class UserLogin:
         print("1.  Book Tickets ")
         print("2.  Cancel Tickets ")
         print("3.  Give User Rating ")
+        print("4. Logout")
         option = int(input("Enter option: "))
 
         match option:
