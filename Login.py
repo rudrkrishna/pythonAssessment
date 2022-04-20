@@ -1,3 +1,5 @@
+import csv
+
 from AdminLogin import AdminLogin
 from UserLogin import UserLogin
 from jproperties import Properties
@@ -16,13 +18,13 @@ class Login:
 
 
         if userID == "Admin":
-            self.passwordValidation(userID, password)
+            self.adminpasswordValidation(userID, password)
             AdminLogin().adminLogin()
         else:
-            self.passwordValidation(userID, password)
+            self.userpasswordvalidation(userID, password)
             UserLogin().userLogin(userID)
 
-    def passwordValidation(self, userID, password):
+    def adminpasswordValidation(self, userID, password):
         configs = Properties()
         with open('credentials.properties', 'rb') as read_prop:
             configs.load(read_prop)
@@ -40,6 +42,19 @@ class Login:
         if userID not in creddict.keys():
             print("Invalid credentials")
             self.login()
+
+    def userpasswordvalidation(self, userid, password):
+        with open('userdetails.csv') as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=',')
+
+            for row in csv_reader:
+                if str(row[0]) == str(userid) and str(row[4]) == str(password):
+                    print("Login Successful")
+                    return True
+
+            print("Invalid Credentials")
+            self.login()
+
 
 
 

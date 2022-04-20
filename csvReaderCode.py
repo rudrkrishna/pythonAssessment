@@ -92,8 +92,7 @@ def addUsers(userdetails):
         for i in range (0, len(users)) :
             user_writer.writerow(users[i])
 
-        configs = Properties()
-        #with open('credentials.properties', 'rb') as write_prop:
+
 
 
 
@@ -218,6 +217,13 @@ def updatecanceltickets(index, count):
         ticket_writer.writerows(li)
 
 
+def userratingupdate(index, userrating):
+    li = readalldata()
+
+    li[index-1][12] = str(userrating)
+    with open('booking_file.csv', mode='w') as booking_file:
+        booking_writer = csv.writer(booking_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        booking_writer.writerows(li)
 
 
 

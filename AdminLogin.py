@@ -81,6 +81,7 @@ class AdminLogin():
                      language, shows, firstshow, intervaltime, gap, capacity]
 
         csvReaderCode.updatecsv(moviedata, csvReaderCode.readmovieindex(moviename))
+        self.adminLogin()
 
 
 
@@ -90,6 +91,7 @@ class AdminLogin():
         print("----------------------------------------------------")
         deltitle = input("Title of the movie to be deleted: ")
         csvReaderCode.deletemovie(deltitle)
+        self.adminLogin()
 
     def logout(self):
         print("Logged out successfully")

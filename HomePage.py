@@ -5,14 +5,15 @@ from RegisterNewAccount import RegisterNewAccount
 
 
 class HomePage:
+    fileVariable = open('booking_file.csv', 'r+')
+    fileVariable.truncate(0)
     flag = True
     while flag:
         print("******Welcome to BookMyShow*******")
         print("1. Login")
         print("2. Register new account")
         print("3. Exit")
-        # fileVariable = open('booking_file.csv', 'r+')
-        # fileVariable.truncate(0)
+
         selectOption = int(input("Enter: "))
 
         match selectOption:

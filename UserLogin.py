@@ -51,6 +51,8 @@ class UserLogin:
                 self.cancelticket()
             case 3:
                 self.giveuserrating()
+            case 4:
+                return
 
 
 
@@ -92,7 +94,14 @@ class UserLogin:
             self.cancelticket()
         else:
             print("Tickets cancelled Successfully")
+        self.useractions()
 
 
     def giveuserrating(self):
-        print()
+
+        csvReaderCode.displaymoviesbyindex()
+        i = int(input("Enter Movie: "))
+        rating = input("Enter User Rating")
+        csvReaderCode.userratingupdate(i, rating)
+        print("User rating updated successfully")
+        self.useractions()
